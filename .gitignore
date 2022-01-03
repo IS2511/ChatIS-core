@@ -1,5 +1,5 @@
 
-index.js
-index.js.map
-index.d.ts
-
+# TypeScript compilation results
+./**/*.js
+./**/*.js.map
+./**/*.d.ts
