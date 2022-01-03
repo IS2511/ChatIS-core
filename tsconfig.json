@@ -1,0 +1,17 @@
+{
+  "version" : "4.4.4",
+  "compilerOptions" : {
+//    "module" : "ES2015",
+    "module" : "amd",
+    "outFile": "./index.js",
+    "removeComments" : true,
+    "baseUrl" : "./",
+    "sourceMap" : true,
+    "alwaysStrict" : true,
+    "strict": true,
+    "declaration" : true
+  },
+  "include": [
+    "./**/*.ts"
+  ],
+}
