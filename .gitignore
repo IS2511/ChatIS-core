@@ -1,5 +1,5 @@
 
 # TypeScript compilation results
-./**/*.js
-./**/*.js.map
-./**/*.d.ts
+/**/*.js
+/**/*.js.map
+/**/*.d.ts
