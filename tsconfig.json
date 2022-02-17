@@ -1,15 +1,19 @@
 {
   "version" : "4.4.4",
   "compilerOptions" : {
+    "target": "ES2015",
     "module" : "ES2015",
-//    "module" : "amd",
-//    "outFile": "./index.js",
     "removeComments" : true,
     "baseUrl" : "./",
     "sourceMap" : true,
     "alwaysStrict" : true,
     "strict": true,
-    "declaration" : true
+    "declaration" : true,
+    "lib": [
+      "dom",
+      "es5",
+      "es2015"
+    ]
   },
   "include": [
     "./**/*.ts"
