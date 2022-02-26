@@ -3,6 +3,7 @@
   "compilerOptions" : {
     "target": "ES2015",
     "module" : "ES2015",
+    "outDir": "dist",
     "removeComments" : true,
     "baseUrl" : "./",
     "sourceMap" : true,
@@ -16,6 +17,6 @@
     ]
   },
   "include": [
-    "./**/*.ts"
+    "./src/**/*"
   ],
 }
