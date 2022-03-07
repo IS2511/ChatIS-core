@@ -1,3 +1,0 @@
-[submodule "twitch/irc/reconnecting-websocket"]
-	path = twitch/irc/reconnecting-websocket
-	url = https://github.com/joewalnes/reconnecting-websocket/
