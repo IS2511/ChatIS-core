@@ -1,21 +1,23 @@
+export type IrcCommand = string;
+
 type IrcTagValue = string | true;
 type IrcTagList = { [name: string]: IrcTagValue };
 type IrcParamList = string[];
 
-export class IrcCommand {
+export default class IrcLine {
     validIrc = false;
     raw: string;
 
     tags: IrcTagList = {};
     prefix?: string;
-    command: string = '';
+    command: IrcCommand = '';
     params: IrcParamList = [];
 
     isValid() { return this.validIrc; }
 
-    constructor(data: string | IrcCommand) {
+    constructor(data: string | IrcLine) {
         // Copy constructor
-        if (data instanceof IrcCommand) {
+        if (data instanceof IrcLine) {
             this.raw = data.raw;
             // if (!data.isValid())
             //     data.parseRaw();
