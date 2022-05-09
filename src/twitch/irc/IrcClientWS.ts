@@ -1,48 +1,33 @@
-import {IrcClientRaw} from './IrcClientRaw'
-import {ReconnectingWebSocket} from './ReconnectingWebSocket';
+import IrcClient from './IrcClient'
+import ReconnectingWebSocket, {UrlProvider,Options} from 'reconnecting-websocket/reconnecting-websocket';
 
-type WSCallbackName = 'onopen' | 'onmessage' | 'onclose' | 'onerror';
-type WSCallback = (ws: ReturnType<typeof ReconnectingWebSocket>) => void;
-type WSCallbackList = {
-    [cmd in WSCallbackName]?: WSCallback | null;
-};
 
-export class IrcClientWS extends IrcClientRaw {
-    ws: ReturnType<typeof ReconnectingWebSocket>;
+export default class IrcClientWS extends IrcClient {
+    private _ws: ReconnectingWebSocket;
 
-    constructor(url: string, params?: any, wsCallbacks?: WSCallbackList) {
+    constructor(url: UrlProvider, options: Options = {}) {
         super();
-        let ws = ReconnectingWebSocket(url, 'irc', params);
+        this._ws = new ReconnectingWebSocket(url, 'irc', options);
 
-        ws.onopen = function() {
-            // console.log('ChatIS: Connected to #' + channel);
-            // ws.send('PASS blah\r\n');
-            // ws.send('NICK justinfan' + Math.floor(Math.random() * 99999) + '\r\n');
-            // ws.send('CAP REQ :twitch.tv/commands twitch.tv/tags\r\n');
-            // ws.send('JOIN #' + channel + '\r\n');
-            if (wsCallbacks && wsCallbacks.onopen) wsCallbacks.onopen(ws);
-        };
+        this._ws.addEventListener('open', function(event) {
+            // const ws = (event.target as ReconnectingWebSocket);
+        });
 
-        const handle = this.handle;
-        ws.onmessage = function(event) {
+        const receive = this.receive;
+        this._ws.addEventListener('message', function(event) {
             (event.data as string).split('\r\n').forEach(line => {
                 if (!line) return;
-                handle(line);
+                receive(line);
             });
-            if (wsCallbacks && wsCallbacks.onmessage) wsCallbacks.onmessage(ws);
-        };
+        });
 
-        ws.onclose = function () {
+        this._ws.addEventListener('close', function(event) {
             // Nothing
-            if (wsCallbacks && wsCallbacks.onclose) wsCallbacks.onclose(ws);
-        }
+        });
 
-        ws.onerror = function (event) {
+        this._ws.addEventListener('error', function(event) {
             console.log('IrcClientWS socket error: ', event);
-            if (wsCallbacks && wsCallbacks.onerror) wsCallbacks.onerror(ws);
-        }
-
-        this.ws = ws;
+        });
     }
 
 }
