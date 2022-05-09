@@ -13,3 +13,8 @@ But not to lie, its primary focus is *Twitch*.
 This is used in the ChatIS overlay: [TODO: insert ChatIS website repo here]
 
 **Get the overlay**: [TODO: insert website here when out]
+
+## How to use
+
+TODO: Add how to compile and use, some examples.
+    Like using the `dist` directory, etc.
