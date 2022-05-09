@@ -1,7 +1,7 @@
 'use strict';
 
 import { Settings, UserSettings, DefaultSettings } from './settings';
-import { IrcCommand } from "../twitch/irc/IrcCommand";
+// import { IrcLine } from "../twitch/irc/IrcLine";
 
 class Chat {
     socket = null;
