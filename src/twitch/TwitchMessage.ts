@@ -1,4 +1,4 @@
-import {IrcLine} from './irc/IrcLine';
+import IrcLine from './irc/IrcLine';
 // import {Md5} from 'ts-md5/src/md5';
 
 // TODO: This is garbage, do something with these lists

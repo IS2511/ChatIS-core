@@ -29,7 +29,7 @@ export default class IrcClient {
             delete this._cb[cmd];
     }
 
-    // Raw client, use this in implementation
+    // Interface, use this in implementation
     receive(cmd: IrcLineOrString): boolean {
         if (typeof(cmd) === 'string')
             cmd = new IrcLine(cmd);
@@ -43,7 +43,7 @@ export default class IrcClient {
             return false;
     }
 
-    // Raw client, override this in implementation
+    // Interface, override this in implementation
     send(cmd: IrcLineOrString): boolean {
         return false;
     }
